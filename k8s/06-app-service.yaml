@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+  namespace: feed-digest
+spec:
+  type: LoadBalancer
+  selector:
+    app: feed-digest-app
+  ports:
+    - port: 80
+      targetPort: 8080

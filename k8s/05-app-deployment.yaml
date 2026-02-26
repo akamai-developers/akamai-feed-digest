@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  namespace: feed-digest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: feed-digest-app
+  template:
+    metadata:
+      labels:
+        app: feed-digest-app
+    spec:
+      serviceAccountName: feed-digest-app
+      nodeSelector:
+        node.kubernetes.io/instance-type: g6-standard-4
+      containers:
+        - name: feed-digest-app
+          image: ${DOCKERHUB_USER}/feed-digest:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: feed-digest-secrets
+                  key: DATABASE_URL
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10

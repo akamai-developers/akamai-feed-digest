@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed Digest</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Feed Digest</h1>
+            <p class="subtitle">AI-curated newsletter briefings on demand</p>
+        </header>
+
+        <main id="app">
+            <!-- Initial view: interests + timeframe cards -->
+            <div id="view-select" class="view">
+                <div class="interests-section">
+                    <h2>Select your interests</h2>
+                    <div class="interests-grid">
+                        <label><input type="checkbox" name="interest" value="Software Engineering" checked> Software Engineering</label>
+                        <label><input type="checkbox" name="interest" value="Cloud Computing" checked> Cloud Computing</label>
+                        <label><input type="checkbox" name="interest" value="AI / ML" checked> AI / ML</label>
+                        <label><input type="checkbox" name="interest" value="Open Source" checked> Open Source</label>
+                        <label><input type="checkbox" name="interest" value="DevOps" checked> DevOps</label>
+                        <label><input type="checkbox" name="interest" value="Distributed Systems" checked> Distributed Systems</label>
+                        <label><input type="checkbox" name="interest" value="Security"> Security</label>
+                        <label><input type="checkbox" name="interest" value="Frontend / Web"> Frontend / Web</label>
+                        <label><input type="checkbox" name="interest" value="Databases"> Databases</label>
+                        <label><input type="checkbox" name="interest" value="Mobile"> Mobile</label>
+                        <label><input type="checkbox" name="interest" value="Blockchain / Web3"> Blockchain / Web3</label>
+                    </div>
+                </div>
+
+                <h2>Choose a timeframe</h2>
+                <div class="cards">
+                    <button class="card" data-hours="24">
+                        <span class="card-time">1 day</span>
+                        <span class="card-count" id="count-24">-- articles</span>
+                    </button>
+                    <button class="card" data-hours="72">
+                        <span class="card-time">3 days</span>
+                        <span class="card-count" id="count-72">-- articles</span>
+                    </button>
+                    <button class="card" data-hours="168">
+                        <span class="card-time">7 days</span>
+                        <span class="card-count" id="count-168">-- articles</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Generating view: progress -->
+            <div id="view-progress" class="view hidden">
+                <div class="progress-box">
+                    <div class="spinner"></div>
+                    <p class="status-text" id="status-text">Starting...</p>
+                    <p class="status-detail" id="status-detail"></p>
+                </div>
+                <div id="status-explain" class="status-explain"></div>
+                <div id="pod-info" class="pod-info hidden">
+                    <div id="pod-phase" class="pod-phase"></div>
+                    <ul id="pod-events" class="pod-events"></ul>
+                </div>
+                <button class="btn-back" id="btn-back-progress">Back</button>
+            </div>
+
+            <!-- Result view: briefing -->
+            <div id="view-result" class="view hidden">
+                <div class="result-meta" id="result-meta"></div>
+                <div class="briefing" id="briefing-content"></div>
+                <button class="btn-back" id="btn-back-result">New Digest</button>
+            </div>
+        </main>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>
