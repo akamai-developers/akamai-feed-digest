@@ -121,7 +121,7 @@ project/
 - [Terraform](https://www.terraform.io/) >= 1.0
 - [Docker](https://www.docker.com/) (for building container images)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
-- [Akamai Cloud (Linode)](https://www.linode.com/) account with API token
+- Create an [Akamai Cloud account here](http://login.linode.com/signup?promo=akm-dev-git-300-31126-M055) with API token (we have a $300 credit just for you) 
 - [Docker Hub](https://hub.docker.com/) account (for pushing images)
 
 ## Deployment
